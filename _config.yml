@@ -20,12 +20,12 @@ baseurl: "/matjek"
 url: "https://lexuande.github.io"
 permalink: /:year/:month/:day/:title
 repository: ShawnTeoh/matjek
-paginate: 5
+paginate: 10
 
 # MatJek specific configurations
 github_profile: "https://github.com/ShawnTeoh"
-user: "John Doe"
-user_email: "john@doe.com"
+user: "lexuande"
+user_email: "xuandepro@gmail.com"
 contact_url: "https://goo.gl/tVljbV"
 google_tracking_id: "UA-96359860-1"
 google_site_verification: "UA-96359860-1"
