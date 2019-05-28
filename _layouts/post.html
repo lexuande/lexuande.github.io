@@ -1,54 +1,59 @@
 ---
-layout: base
-more-css:
-  - "/css/post.css"
-  - "/css/post-layout.css"
-  - "/css/tag-page.css"
-more-js:
-  - "/js/backtotop.js"
+layout: default
+css: ["post.css"]
+js: ["post.js"]
 ---
-
-{% case page.header %}
-  {% when 'reading' %}
-    {% include header.html type="reading" %}
-  {% else %}
-    {% include header.html type="post" %}
-{% endcase %}
-
-<div class="container post-container">
-  <div class="row justify-content-center">
-    <div class="col-md-10 col-lg-8 col-12">
-      <div class="post-content mb-4">
-        {{ content }}
+<div id="post-info">
+  <h3>{{page.title}}</h3>
+  <ul class="collapsible hoverable" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Date">date_range</i>
+          {{page.date | date: "%d/%m/%Y %H:%M"}}
+          <i id="indicate" class="right material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Show extra info">info</i>
+        </span>
       </div>
-      <div class="tag-list text-center">
-        {% for tag in page.tags %}
+      <div class="collapsible-body">
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Categories">sort</i>
+          {% for cat in page.categories %}
+          {% capture test %}{{cat | slice: 0}}{% endcapture %}
+          {% capture testup %}{{cat | slice: 0 | upcase}}{% endcapture %}
+          <a href="{{site.baseurl}}/categories#{{cat | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank"><div class="chip">{{cat}}</div></a>
+          {% endfor %}
+        </span>
+        <span>
+          <i class="material-icons tooltipped" data-position="left" data-delay="30" data-tooltip="Tags">label</i>
+          {% for tag in page.tags %}
           {% capture test %}{{tag | slice: 0}}{% endcapture %}
           {% capture testup %}{{tag | slice: 0 | upcase}}{% endcapture %}
-          <a class="tag-chip" href="{{site.baseurl}}/tags/{{ page.categories[0] }}#{{ tag | slugify }}{% if test == testup %}_cap{% endif %}">
-            <i class="fa fa-tag"></i>
-            {{ tag }}
-          </a>
-        {% endfor %}
+          <a href="{{site.baseurl}}/tags#{{tag | slugify}}{% if test == testup %}_cap{% endif %}" target="_blank"><div class="chip">{{tag}}</div></a>
+          {% endfor %}
+        </span>
       </div>
-    </div>
+    </li>
+  </ul>
+</div>
+<div class="divider"></div>
+<div class="row">
+  <div class="col s12">
+    {{ content }}
   </div>
 </div>
-
-<section class="my-4 py-4">
-  <div class="container post-container">
-    {% include more-posts.html %}
-  </div>
-</section>
-
-{% unless page.comment %}
-<div  class="container post-container">
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-12 my-4">
-      <div class="disqus-comments">
-        {% include disqus.html %}
-      </div>
-    </div>
-  </div>
-</div>
-{% endunless %}
+{% if site.disqus_shortname and page.comments %}
+<div id="disqus_thread"></div>
+<script>
+  var disqus_config = function () {
+    this.page.url = "{{site.url}}{{site.baseurl}}{{page.url}}";
+    this.page.identifier = "{{page.id}}";
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//{{site.disqus_shortname}}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}

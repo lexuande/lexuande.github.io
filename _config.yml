@@ -1,37 +1,46 @@
-title: Le Xuan De
-description: Beautiful personal Jekyll theme
-baseurl: "/TaniaJekyll" # the subpath of your site, e.g. /blog
-url: "http://lexuande.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-title-separator: "-"
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: MatJek
+description: > # this means to ignore newlines until "baseurl:"
+  Material theme based on <a href="http://materializecss.com">Materialize.css</a> for jekyll sites
+baseurl: "/matjek"
+url: "https://shawnteoh.github.io"
+permalink: /:year/:month/:day/:title
+repository: ShawnTeoh/matjek
+paginate: 5
 
-author:
-  name: TaniaJekyll
-  github: dinhanhthi
-  facebook: math2it
-  email: dinhanhthi@gmail.com
-
+# MatJek specific configurations
+github_profile: "https://github.com/ShawnTeoh"
+user: "John Doe"
+user_email: "john@doe.com"
+contact_url: "https://goo.gl/tVljbV"
+google_tracking_id: "UA-96359860-1"
+google_site_verification: "UA-96359860-1"
+disqus_shortname: "matjek"
 
 # Build settings
-timezone: "Europe/Paris"
 markdown: kramdown
-kramdown:
-  input: GFM
-highlighter: rouge
-permalink: /:categories/:title
-# paginate: 24
-# paginate_path: "/thought/page-:num"
-
-# Facebook App ID
-# fb_app_id: ""
-
-sass:
-  style: compact
-
+gems:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
 exclude:
   - Gemfile
   - Gemfile.lock
-  - CNAME
-
-plugins:
-  - jekyll-feed
+sass:
+  style: compressed
+future: true

@@ -1,11 +1,10 @@
 ---
-layout: base
-title: Dinh Anh Thi
-subtitle: Nest of an autodidactic worm
-nav: home
+layout: default
+css: ["page.css"]
 ---
-
-{% include header.html type="page" %}
-
-{{ content }}
-
+<div id="page-info">
+  <h3>{{page.title}}</h3>
+</div>
+<div class="row">
+  {{ content }}
+</div>
