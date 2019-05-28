@@ -2,7 +2,7 @@
 # in the templates available like {{ site.myvariable }}.
 title: LÊ XUÂN ĐỆ
 email: xuandepro@gmail
-brand: Your Name
+brand: Lê Xuân Đệ
 headline: Inventor, Engineer and Futurist
 description: > # Chia sẻ để thành công hơn
   New Site
@@ -17,8 +17,8 @@ markdown: kramdown
 snapwidget: 247552
 
 # Contacts
-email: your.name@gmail.com
-phone: +1-800-555-2016
+email: xuandepro@gmail.com
+phone: 0901694150
 
 # Tracking
 googleAnalitycsID: UA-83933844-1
